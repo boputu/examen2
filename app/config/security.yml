@@ -1,0 +1,49 @@
+# To get started with security, check out the documentation:
+# https://symfony.com/doc/current/security.html
+security:
+    encoders:
+        EsqueletoBundle\Entity\Login:
+            algorithm: bcrypt
+
+    providers:
+        in_memory:
+            memory:
+                users:
+                    admin:
+                        password: abc
+                        roles: 'ROLE_ADMIN'
+        my_db_provider:
+            entity:
+                class: EsqueletoBundle:Login
+                property: username
+    access_control:
+    - { path: ^/login,roles: IS_AUTHENTICATED_ANONYMOUSLY}
+    - { path: ^/usuario/crud,roles: ROLE_ADMIN}
+    - { path: ^/paco/crud,roles: ROLE_ADMIN}
+    - { path: ^/admin,roles: ROLE_ADMIN}
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        usuarios:
+          pattern: ^/
+          anonymous: ~
+          provider: my_db_provider
+          form_login:
+              login_path: /usuario/login
+              check_path: /usuario/login
+          logout:
+              path: /usuario/logout
+              target: /usuario/login
+        admin:
+            pattern: ^/admin
+            http_basic: ~
+            # activate different ways to authenticate
+
+            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+            #http_basic: ~
+
+            # https://symfony.com/doc/current/security/form_login_setup.html
+            #form_login: ~

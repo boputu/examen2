@@ -1,0 +1,24 @@
+<p>Cerveza:</p>
+
+{% for cerveza in cervezas %}
+Id:{{cerveza.id}}
+<br>
+Nombre:{{cerveza.nombre}}
+<br>
+Pais:{{cerveza.pais}}
+<br>
+Poblacion:{{cerveza.poblacion}}
+<br>
+Tipo:{{cerveza.tipo}}
+<br>
+Importacion:{{cerveza.importacion}}
+<br>
+Tamanyo:{{cerveza.tamanyo}}
+<br>
+Fecha Almacen:{{cerveza.fechaAlmacen|date}}
+<br>
+Cantidad:{{cerveza.cantidad}}
+<br>
+Foto:{{cerveza.foto}}
+<br>
+{% endfor %}

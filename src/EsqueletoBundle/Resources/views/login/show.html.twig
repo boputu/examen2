@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Login</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ login.id }}</td>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td>{{ login.username }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ login.email }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('paco_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('paco_edit', { 'id': login.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{% for croyale in royale %}
+ID: {{ croyale.id}}<br>
+Nombre: {{ croyale.nombre}}<br>
+Tipo: {{ croyale.tipo}}<br><br>
+{% endfor %}
+{% endblock %}

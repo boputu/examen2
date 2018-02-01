@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Logins list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for login in logins %}
+            <tr>
+                <td><a href="{{ path('paco_show', { 'id': login.id }) }}">{{ login.id }}</a></td>
+                <td>{{ login.username }}</td>
+                <td>{{ login.email }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('paco_show', { 'id': login.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('paco_edit', { 'id': login.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Mostrando el usuario {{ usuario.usuario }}</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ usuario.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ usuario.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Usuario</th>
+                <td>{{ usuario.usuario }}</td>
+            </tr>
+            <tr>
+                <th>Contrasenya</th>
+                <td>{{ usuario.contrasenya }}</td>
+            </tr>
+            <tr>
+                <th>Ranking</th>
+                <td>{{ usuario.ranking }}</td>
+            </tr>
+            <tr>
+                <th>Level</th>
+                <td>{{ usuario.level }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('usuario_index') }}">Volver</a>
+        </li>
+        <li>
+            <a href="{{ path('usuario_edit', { 'id': usuario.id }) }}">Editar usuario</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Borrar usuario">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
